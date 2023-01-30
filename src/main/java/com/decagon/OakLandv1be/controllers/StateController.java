@@ -22,13 +22,15 @@ public class StateController {
 
     @GetMapping("/admin/delete_state/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public  void deleteState(@PathVariable Long id){
+    public ResponseEntity<String> deleteState(@PathVariable Long id){
         statesService.deleteState(id);
+        return ResponseEntity.ok("State deleted successfully");
     }
 
     @GetMapping("/view_state/{nameOfState}")
     @ResponseStatus(HttpStatus.OK)
-    public  void viewState(@PathVariable String nameOfState) { statesService.viewStateByName(nameOfState);
+    public ResponseEntity<Object> viewState(@PathVariable String nameOfState) {
+        return ResponseEntity.ok(statesService.viewStateByName(nameOfState));
     }
 
 

@@ -52,7 +52,7 @@ public class StatesServiceImpl implements StatesService {
 
     @Override
     public StateResponse viewStateByName(String name) {
-        State state = stateRepository.findByName(name).orElseThrow(
+        State state = stateRepository.findByName(name.toUpperCase()).orElseThrow(
                 () -> new ResourceNotFoundException("State not found"));
         return responseMapper(state);
     }
