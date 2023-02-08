@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
         BeanUtils.copyProperties(signupRequestDto, person);
         person.setCustomer(customer);
         person.setRole(Role.CUSTOMER);
-        person.setVerificationStatus(false);
+        person.setVerificationStatus(true);
         person.setGender(Gender.valueOf(signupRequestDto.getGender().toUpperCase()));
         person.setPassword(passwordEncoder.encode(signupRequestDto.getPassword()));
         Wallet wallet = Wallet.builder()

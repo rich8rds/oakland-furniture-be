@@ -12,10 +12,12 @@ public class ApiQuery {
     }
 
     public void putParams(String key, Object value){
+
         this.queryMap.put(key, value);
     }
 
     public HashMap<String, Object> getParams(){
+
         return this.queryMap;
     }
 }

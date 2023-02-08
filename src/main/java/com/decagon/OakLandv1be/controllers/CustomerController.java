@@ -72,6 +72,11 @@ public class CustomerController {
         customerService.addProductToFavorites(pid);
         return new ResponseEntity<>("Product added to favourites successfully", HttpStatus.ACCEPTED);
     }
+    @DeleteMapping("/product/favorites/remove/{pid}")
+    public ResponseEntity<String> removeFromFavorites(@PathVariable Long pid){
+        customerService.removeProductFromFavorites(pid);
+        return new ResponseEntity<>("Product removed from favourites successfully", HttpStatus.ACCEPTED);
+    }
 
     @GetMapping("customer/cart/item/view-all")
     public ResponseEntity<List<CartItemResponseDto>> fetchProductsFromCustomerCart() {
