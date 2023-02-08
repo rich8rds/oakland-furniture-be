@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/")
+@RequestMapping("/api/v1/")
 public class OrderController {
     private final OrderService orderService;
     private final CartService cartService;
@@ -56,11 +56,13 @@ public class OrderController {
             @RequestParam(defaultValue = "10") Integer pageSize    ){
         return ResponseEntity.ok(orderService.getOrderByDeliveryStatus(status, pageNo, pageSize));
     }
-    @GetMapping("customer/order/delivery-status")
+
+    @GetMapping("customer/order/pickup-status")
     public ResponseEntity<Page<OrderResponseDto>> orderByPickupStatus(
             @RequestParam PickupStatus status,
             @RequestParam(defaultValue = "0") Integer pageNo,
-            @RequestParam(defaultValue = "10") Integer pageSize    ){
+            @RequestParam(defaultValue = "1") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy ){
         return ResponseEntity.ok(orderService.getCustomerOrderByPickupStatus(status, pageNo, pageSize));
     }
 }
